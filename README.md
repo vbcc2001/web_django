@@ -11,6 +11,7 @@ cd  D:\F02_SRC\web_django
 
 python manage.py migrate
 
+python manage.py collectstatic
 
 py manage.py runserver
 
