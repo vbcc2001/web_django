@@ -74,11 +74,12 @@ WSGI_APPLICATION = 'zxkj.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'OPTIONS': {
-            'service': 'my_service',
-            'passfile': '.my_pgpass',
-        },
+        'ENGINE': 'django.db.backends.postgresql',   
+        'NAME': 'd6k4l8s1rfib58', # 数据库名，Django不会帮你创建，需要自己进入数据库创建。
+        'USER': 'jcjvmxrtprkhig',     # 设置的数据库用户名
+        'PASSWORD': '0ce3a510d31667149cf1e6138dd940fd5e52918fe6dd5ef5bcb6d6822492f406',     # 设置的密码
+        'HOST': 'ec2-52-207-163-202.compute-1.amazonaws.com',    # 本地主机或数据库服务器的ip
+        'PORT': '5432',         # 数据库使用的端口
     }
 }
 

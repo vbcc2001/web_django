@@ -1,2 +1,7 @@
+# 生产部署依赖
 gunicorn
+# 核心框架
 Django
+# 数据库依赖
+# psycopg[binary,pool]
+psycopg2-binary
