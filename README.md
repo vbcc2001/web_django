@@ -15,6 +15,7 @@ cd  D:\F02_SRC\web_django
 py -m pip install Django
 # pip install psycopg[binary,pool]  
 pip install psycopg2
+pip install whitenoise
 
 py manage.py migrate
 
