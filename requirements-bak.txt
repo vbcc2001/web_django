@@ -1,0 +1,18 @@
+# 生产部署依赖
+gunicorn
+# 核心框架
+Django
+# 数据库依赖
+# psycopg[binary,pool]
+# psycopg2-binary
+psycopg2
+whitenoise
+
+
+# asgiref==3.4.1
+# Django==4.0.1
+# gunicorn==20.1.0
+# psycopg2-binary==2.9.3
+# sqlparse==0.4.2
+# tzdata==2021.5
+# whitenoise==5.3.0
