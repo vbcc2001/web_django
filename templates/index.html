@@ -41,7 +41,7 @@
         <div class="col-md-4">
             <!-- 企业概况 -->
             <span class="part1">
-                <a href="{% url 'aboutApp:survey' %}">企业概况</a>
+                <a href="{#% url 'aboutApp:survey' %}">企业概况</a>
             </span>
             <span class="part1 en">
                 &nbsp;&nbsp;/ About Us
@@ -66,7 +66,7 @@
             <span class="part1 en">
                 &nbsp;&nbsp;/ News
             </span>
-            <a class="btn btn-default btn-xs more-btn" href="{% url 'newsApp:news' 'company' %}">
+            <a class="btn btn-default btn-xs more-btn" href="{#% url 'newsApp:news' 'company' %}">
                 +&nbsp;更多
             </a>
             <div class="line1">
@@ -87,7 +87,7 @@
                         {% for post in postList %}
                         <div {% if forloop.first %} class="item active" {% else %} class="item" {% endif %}
                                                                                    style="background-size:cover;">
-                            <a href="{% url 'newsApp:newDetail' post.id %}">
+                            <a href="{#% url 'newsApp:newDetail' post.id %}">
                                 <img src="{{ post.photo.url }}" class="img-responsive" onload="DrawImage(this)">
                             </a>
                             <div class="carousel-caption nav-title">{{ post.title }}</div>
@@ -100,7 +100,7 @@
                 <ul class="list-unstyled list-new">
                     {% for mynew in newList %}
                     <li>
-                        <a href="{% url 'newsApp:newDetail' mynew.id %}">
+                        <a href="{#% url 'newsApp:newDetail' mynew.id %}">
                             {{ mynew.title|truncatechars:"15" }}</a>
                         <span>【{{ mynew.publish_date|date:"Y-m-d" }}】</span>
                     </li>
@@ -121,7 +121,7 @@
             <span class="part1 en">
                 &nbsp;&nbsp;/ Public Release
             </span>
-            <a class="btn btn-default btn-xs more-btn" href="{% url 'newsApp:news' 'notice' %}">
+            <a class="btn btn-default btn-xs more-btn" href="{#% url 'newsApp:news' 'notice' %}">
                 +&nbsp;更多
             </a>
             <div class="line1">
@@ -132,10 +132,10 @@
                 <ul class="list-unstyled list-new">
                     {% for note in noteList %}
                     <li>
-                        <a href="{% url 'newsApp:newDetail' note.id %}">
+                        <a href="{#% url 'newsApp:newDetail' note.id %}">
                             {{ note.title|truncatechars:"25" }}
                         </a>
-                        <a href="{% url 'newsApp:newDetail' note.id %}" class="public-detail">
+                        <a href="{#% url 'newsApp:newDetail' note.id %}" class="public-detail">
                             查看详情>>
                         </a>
                     </li>
@@ -149,7 +149,7 @@
         <div class="col-md-4">
             <!-- 科研基地 -->
             <span class="part1">
-                <a href="{% url 'scienceApp:science' %}">科研基地</a>
+                <a href="{#% url 'scienceApp:science' %}">科研基地</a>
             </span>
             <span class="part1 en">
                 &nbsp;&nbsp;/ Technology Center
@@ -158,7 +158,7 @@
                 <div class="line2 theme"></div>
             </div>
             <div>
-                <a href="{% url 'scienceApp:science' %}">
+                <a href="{#% url 'scienceApp:science' %}">
                     <img class="img-responsive" src="{% static 'img/ky.jpg' %}">
                 </a>
                 <p class="text1">
@@ -174,7 +174,7 @@
         <div class="col-md-4">
             <!-- 联系我们 -->
             <span class="part1">
-                <a href="{% url 'contactApp:contact' %}">联系我们</a>
+                <a href="{#% url 'contactApp:contact' %}">联系我们</a>
             </span>
             <span class="part1 en">
                 &nbsp;&nbsp;/ Contact us
@@ -194,7 +194,7 @@
                         网址：<a href="http://python3web.com">http://python3web.com</a>
                     </li>
                 </ul>
-                <div class="platform"><a href="{% url 'contactApp:contact' %}">详情</a></div>
+                <div class="platform"><a href="{#% url 'contactApp:contact' %}">详情</a></div>
             </div>
 
         </div>
@@ -206,12 +206,12 @@
         <div class="col-md-12 col-pro">
 
             <span class="part1">
-                <a href="{% url 'productsApp:products' 'robot' %}">产品中心</a>
+                <a href="{#% url 'productsApp:products' 'robot' %}">产品中心</a>
             </span>
             <span class="part1 en">
                 &nbsp;&nbsp;/ Products
             </span>
-            <a class="btn btn-default btn-xs more-btn" href="{% url 'productsApp:products' 'robot' %}">
+            <a class="btn btn-default btn-xs more-btn" href="{#% url 'productsApp:products' 'robot' %}">
                 +&nbsp;更多
             </a>
             <div class="line1" style="margin-bottom:5px;">
@@ -227,7 +227,7 @@
                             <div class="row">
                                 {% for product in productList %}
                                 <div class="col-md-3 pro-images">
-                                    <a href="{% url 'productsApp:products_details' product.id %}"
+                                    <a href="{#% url 'productsApp:products_details' product.id %}"
                                        class="thumbnail">
 
                                         <img src="{{ product.photo.url }}" alt="产品图片" class="img-responsive" onload="DrawImage(this)">
