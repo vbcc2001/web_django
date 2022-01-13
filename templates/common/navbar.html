@@ -1,0 +1,60 @@
+{% load static %}
+<!-- 导航条 -->
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example"
+        aria-expanded="false">
+        <span>导航条</span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example">
+      <ul class="nav navbar-nav">
+        <li class="nav-top">
+          <a href="{% url 'home' %}">首页</a>
+        </li>
+        <li class="dropdown nav-top">
+          <a href="#" class="dropdown-toggle on" data-toggle="dropdown">公司简介</a>
+          <ul class="dropdown-menu">
+            <li><a href="{% url 'aboutApp:survey' %}">企业概况</a></li>
+            <li><a href="{% url 'aboutApp:honor' %}">荣誉资质</a></li>
+          </ul>
+        </li>
+        <li class="dropdown nav-top">
+          <a href="#" class="dropdown-toggle on" data-toggle="dropdown">新闻动态</a>
+          <ul class="dropdown-menu">
+            <li><a href="{% url 'newsApp:news' 'company' %}">公司要闻</a></li>
+            <li><a href="{% url 'newsApp:news' 'industry' %}">行业新闻</a></li>
+            <li><a href="{% url 'newsApp:news' 'notice' %}">通知公告</a></li>
+          </ul>
+        </li>
+        <li class="dropdown nav-top">
+          <a href="#" class="dropdown-toggle on" data-toggle="dropdown">产品中心</a>
+          <ul class="dropdown-menu">
+            <li><a href="{% url 'productsApp:products' 'robot' %}">XX机器人</a></li>
+            <li><a href="{% url 'productsApp:products' 'monitor' %}">智能门锁</a></li>
+            <li><a href="{% url 'productsApp:products' 'face' %}">人脸识别项目</a></li>
+          </ul>
+        </li>
+        <li class="dropdown nav-top">
+          <a href="#" class="dropdown-toggle on" data-toggle="dropdown">服务支持</a>
+          <ul class="dropdown-menu">
+            <li><a href="{% url 'serviceApp:download' %}">资料下载</a></li>
+            <li><a href="#">人脸识别开放平台</a></li>
+          </ul>
+        </li>
+        <li class="dropdown nav-top">
+          <a href="{% url 'scienceApp:science' %}">科研基地</a>
+        </li>
+        <li class="dropdown nav-top">
+          <a href="#" class="dropdown-toggle on" data-toggle="dropdown">人才招聘</a>
+          <ul class="dropdown-menu">
+            <li><a href="{% url 'contactApp:contact' %}">联系我们</a></li>
+            <li><a href="{% url 'contactApp:recruit' %}">加入恒达</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="line"></div>

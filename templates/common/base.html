@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-cn">
+<!-- head -->
+{% include "./head.html" %}
+
+<body>
+  <!-- navbar -->
+  {% include "./navbar.html" %}
+  <!-- content -->
+  {% block content %}{% endblock %}
+  <!-- footer -->
+  {% include "./booter.html" %}
+</body>
+<script>
+  $(function () {
+    $(".dropdown").mouseover(function () {
+      $(this).addClass("open")
+    });
+    $(".dropdown").mouseleave(function () {
+      $(this).removeClass("open");
+    });
+    $('#{{active_menu}}').addClass("active");
+    $('#{{sub_menu}}').addClass("active");
+  });
+</script>
+
+</html>
