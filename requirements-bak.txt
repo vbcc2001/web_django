@@ -4,8 +4,8 @@ gunicorn
 Django
 # 数据库依赖
 # psycopg[binary,pool]
-# psycopg2-binary
-psycopg2
+psycopg2-binary
+# 静态文件服务
 whitenoise
 
 

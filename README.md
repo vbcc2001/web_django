@@ -17,6 +17,8 @@ py -m pip install Django
 pip install psycopg2
 pip install whitenoise
 
+pip freeze > requirements.txt
+
 py manage.py migrate
 
 py manage.py collectstatic
