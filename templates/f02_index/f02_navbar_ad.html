@@ -1,0 +1,32 @@
+{% load static %}
+<!-- 广告横幅 -->
+<div id="ad" class="carousel slide" data-ride="carousel" data-interval="5000">
+    <ol class="carousel-indicators">
+        <li data-target="#ad" data-slide-to="0" class="active"></li>
+        <li data-target="#ad" data-slide-to="1"></li>
+        <li data-target="#ad" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        {% if adList|length > 0 %}
+            {% for ad in adList %}
+                <div class="item {% if forloop.first %} active {% endif %}" style = "min-height: 100px;max-height: 400px;">
+                    <a href="{{ ad.url }}"><img src="{{ad.photo.url}}" alt="{{ad.title}}"></a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="item active">
+                <img src="{% static 'img/banner1.jpg' %}" alt="广告横幅1">
+            </div>
+            <div class="item">
+                <img src="{% static 'img/banner2.jpg' %}" alt="广告横幅2">
+            </div>
+            <div class="item">
+                <img src="{% static 'img/banner3.jpg' %}" alt="广告横幅3">
+            </div>
+        {% endif %}
+    </div>
+    <a class="left carousel-control" href="#ad" data-slide="prev"><span
+                                                class="glyphicon glyphicon-chevron-left"></span></a>
+    <a class="right carousel-control" href="#ad" data-slide="next"><span
+                                                 class="glyphicon glyphicon-chevron-right"></span></a>
+</div>
