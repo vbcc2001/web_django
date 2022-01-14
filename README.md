@@ -12,16 +12,19 @@ cd D:\F07_Python\env\web_django\Scripts\
 cd  D:\F02_SRC\web_django
 ```
 ```
-py -m pip install Django
-# pip install psycopg[binary,pool]  
-pip install psycopg2
-pip install whitenoise
+python -m pip install Django
+# python -m install psycopg[binary,pool]  
+python -m pip install psycopg2
+python -m pip install whitenoise
+
+python -m pip install Pillow
 
 pip freeze > requirements.txt
 
-py manage.py migrate
-
-py manage.py collectstatic
+python manage.py makemigrations 
+python manage.py migrate
+python manage.py createsuperuser
+python manage.py collectstatic
 
 py manage.py runserver
 ```
