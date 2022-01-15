@@ -19,7 +19,7 @@ python -m pip install whitenoise
 
 python -m pip install Pillow
 python -m pip install django-ckeditor
-
+python -m pip install pyquery
 
 pip freeze > requirements.txt
 

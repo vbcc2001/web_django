@@ -5,8 +5,8 @@
 <!--主体部分-->
 <div class="container">
   <div class="model-details-product-title">
-    {{ mynew.title }}<div class="model-foot">发布时间：{{ mynew.publish_date }}&nbsp;&nbsp;&nbsp;浏览量：{{ mynew.views }}</div>
+    {{ news.title }}<div class="model-foot">发布时间：{{ news.publish_date }}&nbsp;&nbsp;&nbsp;浏览量：{{ news.views }}</div>
   </div>
-  <div class="model-details">{{ mynew.description | safe }} </div>
+  <div class="model-details">{{ news.description | safe }} </div>
 </div>
 {% endblock %}

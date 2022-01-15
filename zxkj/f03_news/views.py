@@ -1,11 +1,10 @@
 from django.core.paginator import Paginator
 from django.shortcuts import render
-# from pyquery import PyQuery as pq
+from pyquery import PyQuery as pq
 from .models import News
 
 def news(request, news_type):
     """新闻动态的动态选择"""
-    sub_menu = news_type
     if news_type == 'company':
         news_name = "企业要闻"
     elif news_type == 'industry':
@@ -17,6 +16,11 @@ def news(request, news_type):
 
     # 从数据库中取出数据
     new_list = News.objects.filter(news_type=news_name).order_by('-publish_date')
+    print(new_list)
+    # 对每条数据进行<p>的文本抽取
+    for my_news in new_list:
+        html = pq(my_news.description)  # 利用pq解析html内容
+        my_news.txt = pq(html)('p').text()  # 截取html的文字
     # 分页处理
     p = Paginator(new_list, 4)
     # 获取当前页数
@@ -26,9 +30,8 @@ def news(request, news_type):
 
     context = {
         'active_menu': 'news',
-        'sub_menu': news_type,
+        'news_type': news_name,
         'news_list': news_list,
-        'news_name': news_name
     }
 
     return render(request, 'f04_news/f01_list.html', context)
@@ -40,7 +43,7 @@ def details(request, id):
     news.save()
     context = {
         'active_menu': 'news',
-        'mynew': news,
+        'news': news,
     }
     return render(request, 'f04_news/f02_details.html', context)
 
