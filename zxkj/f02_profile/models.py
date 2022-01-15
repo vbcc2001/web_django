@@ -12,5 +12,4 @@ class Award(models.Model):
 
     class Meta:
         verbose_name = verbose_name_plural = '荣誉资质'
-        db_table = 'award'
         ordering = ('-id', )
