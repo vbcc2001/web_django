@@ -29,13 +29,15 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'zxkj.f02_profile', # 简介
+    'zxkj.f01_index.apps.Config', # 首页
+    'zxkj.f02_profile.apps.Config', # 简介
 ]
 
 MIDDLEWARE = [

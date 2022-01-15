@@ -1,1 +1,0 @@
-default_app_config='zxkj.f01_index.apps.Config'
