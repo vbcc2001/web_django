@@ -18,6 +18,8 @@ python -m pip install psycopg2
 python -m pip install whitenoise
 
 python -m pip install Pillow
+python -m pip install django-ckeditor
+
 
 pip freeze > requirements.txt
 

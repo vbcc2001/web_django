@@ -1,0 +1,12 @@
+{% extends "../f01_common/f01_base.html" %}
+{% load static %}
+{% block title %}新闻动态{% endblock %}
+{% block content %}
+<!--主体部分-->
+<div class="container">
+  <div class="model-details-product-title">
+    {{ mynew.title }}<div class="model-foot">发布时间：{{ mynew.publish_date }}&nbsp;&nbsp;&nbsp;浏览量：{{ mynew.views }}</div>
+  </div>
+  <div class="model-details">{{ mynew.description | safe }} </div>
+</div>
+{% endblock %}

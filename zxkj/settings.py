@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'zxkj.f01_index.apps.Config', # 首页
     'zxkj.f02_profile.apps.Config', # 简介
+    'zxkj.f03_news.apps.Config', # 简介
+    'ckeditor',  # 多媒体编辑器
 ]
 
 MIDDLEWARE = [

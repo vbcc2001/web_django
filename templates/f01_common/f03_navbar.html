@@ -16,16 +16,16 @@
         <li class="dropdown nav-top">
           <a href="#" class="dropdown-toggle on" data-toggle="dropdown">公司简介</a>
           <ul class="dropdown-menu">
-            <li><a href="/profile">企业概况</a></li>
-            <li><a href="/profile/honor">荣誉资质</a></li>
+            <li><a href="{% url 'profile:index' %}">企业概况</a></li>
+            <li><a href="{% url 'profile:honor' %}">荣誉资质</a></li>
           </ul>
         </li>
         <li class="dropdown nav-top">
           <a href="#" class="dropdown-toggle on" data-toggle="dropdown">新闻动态</a>
           <ul class="dropdown-menu">
-            <li><a href="{#% url 'newsApp:news' 'company' %}">公司要闻</a></li>
-            <li><a href="{#% url 'newsApp:news' 'industry' %}">行业新闻</a></li>
-            <li><a href="{#% url 'newsApp:news' 'notice' %}">通知公告</a></li>
+            <li><a href="{% url 'news:list' 'company' %}">公司要闻</a></li>
+            <li><a href="{% url 'news:list' 'industry' %}">行业新闻</a></li>
+            <li><a href="{% url 'news:list' 'notice' %}">通知公告</a></li>
           </ul>
         </li>
         <li class="dropdown nav-top">
