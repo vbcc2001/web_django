@@ -11,6 +11,10 @@ cd D:\F07_Python\env\web_django\Scripts\
 .\activate
 cd  D:\F02_SRC\web_django
 
+pip install virtualenv  
+virtualenv ~/env/web_django 
+source ~/env/web_django/bin/activate  
+
 # 导出 pip freeze > requirements.txt
 pip install -r requirements.txt
 
