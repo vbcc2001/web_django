@@ -27,6 +27,7 @@ urlpatterns = [
     path('product/', include('zxkj.f04_product.urls', namespace='product')),   # 产品中心
     path('science/', include('zxkj.f05_science.urls', namespace='science')),   # 科研基地
     path('contact/', include('zxkj.f06_contact.urls', namespace='contact')),   # 联系我们
+    path('service/', include('zxkj.f08_service.urls', namespace='service')),   # 服务支持
     path('admin/', admin.site.urls),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

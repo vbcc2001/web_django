@@ -24,6 +24,10 @@ python -m pip install docx2pdf
 python -m pip install docxtpl
 
 python -m pip install django-widget-tweaks
+ # 矩阵运算
+python -m pip install numpy  
+
+python -m pip install opencv-python
 
 
 pip freeze > requirements.txt
