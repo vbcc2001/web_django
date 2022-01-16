@@ -37,7 +37,7 @@
         {% for doc in docList %}
         <div class="news-model">
           <img src="{% static 'img/newsicon.gif' %}">
-          <a href="{% url 'service:getDoc' doc.id %}"><b>{{ doc.title }}</b></a>
+          <a href="{% url 'service:doc' doc.id %}"><b>{{ doc.title }}</b></a>
           <span>【{{ doc.publish_date|date:"Y-m-d" }}】</span>
         </div>
         {% endfor %}

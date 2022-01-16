@@ -107,7 +107,7 @@ def doc(request, id):
 
 def platform(request):
     submenu = 'platform'
-    return render(request, 'f08_service/f01_plat_form.html', {
+    return render(request, 'f08_service/f02_plat_form.html', {
         'active_menu': 'service',
         'sub_menu': submenu,
     })
