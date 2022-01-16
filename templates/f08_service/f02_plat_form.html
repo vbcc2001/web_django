@@ -92,7 +92,7 @@
             var file = $("#photo")[0].files[0];
             formdata.append("image", file);
             $.ajax({
-              url: "{% url 'service:face_detect' %}", // 调用Django服务器计算函数
+              url: "/service/face_detect", // 调用Django服务器计算函数
               type: 'POST', // 请求类型
               data: formdata,
               dataType: 'json', // 期望获得的响应类型为json
