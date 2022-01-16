@@ -16,15 +16,15 @@ Including another URLconf
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
-from django.views.generic.base import RedirectView
 from .f01_index import views
 from . import settings
+
 urlpatterns = [
-    # favicon.cio
-    path('favicon.ico', RedirectView.as_view(url=r'static/favicon.ico')),  
+
     path('', views.index, name='index'),
     path('profile/', include('zxkj.f02_profile.urls', namespace='profile')),   # 公司简介
     path('news/', include('zxkj.f03_news.urls', namespace='news')),   # 新闻动态
+    path('product/', include('zxkj.f04_product.urls', namespace='product')),   # 产品中心
     path('admin/', admin.site.urls),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

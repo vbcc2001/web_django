@@ -1,6 +1,8 @@
 {% load static %}
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <!-- 导航条 -->
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-default" role="navigation" id="vue-app">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example"
@@ -31,9 +33,7 @@
         <li class="dropdown nav-top">
           <a href="#" class="dropdown-toggle on" data-toggle="dropdown">产品中心</a>
           <ul class="dropdown-menu">
-            <li><a href="{#% url 'productsApp:products' 'robot' %}">XX机器人</a></li>
-            <li><a href="{#% url 'productsApp:products' 'monitor' %}">智能门锁</a></li>
-            <li><a href="{#% url 'productsApp:products' 'face' %}">人脸识别项目</a></li>
+            <li v-for="product_type in menu['product_type_list']"><a :href="'/product/' + product_type" >[[product_type]]</a></li>
           </ul>
         </li>
         <li class="dropdown nav-top">
@@ -58,3 +58,34 @@
   </div>
 </nav>
 <div class="line"></div>
+<script>
+  var app = new Vue({
+    delimiters: ["[[", "]]"],
+    el: '#vue-app',
+    data: {
+      menu: {
+        'product_type_list': ['-'],
+      }
+    },
+    mounted() {
+      axios
+        .get("{% url 'product:type' %}")
+        .then(response => {
+          var data = response.data;
+          console.log(data);
+          for (var x in data) {
+            console.log(x);
+          }
+          this.menu['product_type_list'] = data['product_type_list'];
+        })
+      $(function () {
+        $(".dropdown").mouseover(function () {
+          $(this).addClass("open")
+        });
+      });
+      $(".dropdown").mouseleave(function () {
+        $(this).removeClass("open");
+      });
+    }
+  })
+</script>
