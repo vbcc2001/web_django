@@ -9,6 +9,10 @@ psycopg2-binary
 whitenoise
 # 富文本编辑器
 django-ckeditor
+# 表单定制化渲染
+django-widget-tweaks
+
+
 
 # asgiref==3.4.1
 # Django==4.0.1

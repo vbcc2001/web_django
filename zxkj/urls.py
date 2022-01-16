@@ -25,7 +25,8 @@ urlpatterns = [
     path('profile/', include('zxkj.f02_profile.urls', namespace='profile')),   # 公司简介
     path('news/', include('zxkj.f03_news.urls', namespace='news')),   # 新闻动态
     path('product/', include('zxkj.f04_product.urls', namespace='product')),   # 产品中心
-    path('science/', include('zxkj.f05_science.urls', namespace='science')),   # 产品中心
+    path('science/', include('zxkj.f05_science.urls', namespace='science')),   # 科研基地
+    path('contact/', include('zxkj.f06_contact.urls', namespace='contact')),   # 联系我们
     path('admin/', admin.site.urls),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

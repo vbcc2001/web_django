@@ -20,6 +20,11 @@ python -m pip install whitenoise
 python -m pip install Pillow
 python -m pip install django-ckeditor
 python -m pip install pyquery
+python -m pip install docx2pdf
+python -m pip install docxtpl
+
+python -m pip install django-widget-tweaks
+
 
 pip freeze > requirements.txt
 

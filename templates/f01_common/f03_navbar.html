@@ -47,10 +47,10 @@
           <a href="{% url 'science:index' %}">科研基地</a>
         </li>
         <li class="dropdown nav-top">
-          <a href="#" class="dropdown-toggle on" data-toggle="dropdown">人才招聘</a>
+          <a href="#" class="dropdown-toggle on" data-toggle="dropdown">联系我们</a>
           <ul class="dropdown-menu">
-            <li><a href="{#% url 'contactApp:contact' %}">联系我们</a></li>
-            <li><a href="{#% url 'contactApp:recruit' %}">加入恒达</a></li>
+            <li><a href="{% url 'contact:contact' %}">联系我们</a></li>
+            <li><a href="{% url 'contact:recruit' %}">加入恒达</a></li>
           </ul>
         </li>
       </ul>

@@ -39,8 +39,10 @@ INSTALLED_APPS = [
     'zxkj.f02_profile.apps.Config', # 简介
     'zxkj.f03_news.apps.Config', # 新闻
     'zxkj.f04_product.apps.Config', # 产品
-    'zxkj.f05_science.apps.Config', # 产品
+    'zxkj.f05_science.apps.Config', # 科研
+    'zxkj.f06_contact.apps.Config', # 联系
     'ckeditor',  # 多媒体编辑器
+    'widget_tweaks', # 添加模型表单定制化渲染
 ]
 
 MIDDLEWARE = [
