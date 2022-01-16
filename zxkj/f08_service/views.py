@@ -1,21 +1,10 @@
-import base64
-import os
-
 from django.core.paginator import Paginator
-from django.http import StreamingHttpResponse, JsonResponse
+from django.http import StreamingHttpResponse
 from django.shortcuts import render, get_object_or_404
-# Create your views here.
 from django.utils.encoding import escape_uri_path
-from django.views.decorators.csrf import csrf_exempt
-
 from .models import Doc
 
-from django.shortcuts import render
-import numpy as np  # 矩阵运算
-import cv2  # opencv包
-
 def doc_list(request):
-    submenu = 'download'
     doc_list = Doc.objects.all().order_by('-publish_date')
     p = Paginator(doc_list, 5)
     if p.num_pages <= 1:
@@ -68,7 +57,6 @@ def doc_list(request):
     return render(
         request, 'f08_service/f01_doc_list.html', {
             'active_menu': 'service',
-            'sub_menu': submenu,
             'doc_list': doc_list,
             'page_data': page_data,
         })
@@ -91,97 +79,9 @@ def doc(request, id):
 
 
 def platform(request):
-    submenu = 'platform'
     return render(request, 'f08_service/f02_plat_form.html', {
         'active_menu': 'service',
-        'sub_menu': submenu,
     })
-    return HttpResponse(html)
-
-
-face_detector_path = '.\\haarcascade_frontalface_default.xml'
-face_detector = cv2.CascadeClassifier(face_detector_path)  # 生成人脸检测器
-
-
-@csrf_exempt  # 用于规避跨站点请求攻击
-def facedetect(request):
-    result = {}
-    # 规定用户用POST的请求上传检测的图片
-    if request.method == "POST":
-        # 请求中包含图像则以流方式读取图像
-        if request.FILES.get("image", None) is not None:
-            image = read_image(stream=request.FILES["image"])
-        else:
-            result.updata({'#faceNum': -1, })
-            return JsonResponse(result)
-
-        # cv2检测的时候是以灰度图片检测的
-        # 将彩色图片转为灰度
-
-        if image.shape[2] == 3:
-            image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-        # 进行人脸检测
-        values = face_detector.detectMultiScale(image, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30),
-                                                flags=cv2.CASCADE_SCALE_IMAGE)
-
-        # 将检测得到的人脸检测关键点封装成坐标
-        values = [(int(a), int(b), int(a + c), int(b + d)) for (a, b, c, d) in values]
-
-        result.update({
-            '#faceNum': len(values),
-            "faces": values,
-        })
-        return JsonResponse(result)
-
-
-def read_image(stream=None):
-    """以流的形似读取图片"""
-    if stream is not None:
-        data_temp = stream.read()
-    image = np.asanyarray(bytearray(data_temp), dtype="uint8")
-    image = cv2.imdecode(image, cv2.IMREAD_COLOR)
-    return image
-
-
-@csrf_exempt
-def facedetectDemo(request):
-    result = {}
-
-    if request.method == "POST":
-        if request.FILES.get('image') is not None:
-            img = read_image(stream=request.FILES["image"])
-        else:
-            result.update({
-                "#faceNum": -1,
-            })
-            return JsonResponse(result)
-
-        if img.shape[2] == 3:
-            imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)  # 彩色图像转灰度图像
-        else:
-            imgGray = img
-
-
-        # 进行人脸检测
-        values = face_detector.detectMultiScale(imgGray,
-                                           scaleFactor=1.1,
-                                           minNeighbors=5,
-                                           minSize=(30, 30),
-                                           flags=cv2.CASCADE_SCALE_IMAGE)
-        # 将检测得到的人脸检测关键点坐标封装
-        values = [(int(a), int(b), int(a + c), int(b + d))
-                  for (a, b, c, d) in values]
-
-        # 将检测框显示在原图上
-        for (w, x, y, z) in values:
-            cv2.rectangle(img, (w, x), (y, z), (0, 255, 0), 2)
-
-        retval, buffer_img = cv2.imencode('.jpg', img)  # 在内存中编码为jpg格式
-        img64 = base64.b64encode(buffer_img)  # base64编码用于网络传输
-        img64 = str(img64, encoding='utf-8')  # bytes转换为str类型
-        result["img64"] = img64  # json封装
-    return JsonResponse(result)
-
 
 def read_file(file_name, size):
     """分批读取文件"""
