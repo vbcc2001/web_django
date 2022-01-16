@@ -4,7 +4,6 @@ import os
 from django.core.paginator import Paginator
 from django.http import StreamingHttpResponse, JsonResponse
 from django.shortcuts import render, get_object_or_404
-
 # Create your views here.
 from django.utils.encoding import escape_uri_path
 from django.views.decorators.csrf import csrf_exempt
@@ -15,27 +14,15 @@ from django.shortcuts import render
 import numpy as np  # 矩阵运算
 import cv2  # opencv包
 
-
-def read_file(file_name, size):
-    """分批读取文件"""
-    with open(file_name, mode='rb') as fp:
-        while True:
-            c = fp.read(size)
-            if c:
-                yield c  # 生成器，相当于一个特殊的迭代器，当运行到这个语句的时候会保存当前的对象；下次再运行到这里的时候会接着上次的对象继续运行。
-            else:
-                break
-
-
-def download(request):
+def doc_list(request):
     submenu = 'download'
-    docList = Doc.objects.all().order_by('-publish_date')
-    p = Paginator(docList, 5)
+    doc_list = Doc.objects.all().order_by('-publish_date')
+    p = Paginator(doc_list, 5)
     if p.num_pages <= 1:
-        pageData = ''
+        page_data = ''
     else:
         page = int(request.GET.get('page', 1))
-        docList = p.page(page)
+        doc_list = p.page(page)
         left = []
         right = []
         left_has_more = False
@@ -68,7 +55,7 @@ def download(request):
                 right_has_more = True
             if right[-1] < total_pages:
                 last = True
-        pageData = {
+        page_data = {
             'left': left,
             'right': right,
             'left_has_more': left_has_more,
@@ -82,26 +69,24 @@ def download(request):
         request, 'f08_service/f01_doc_list.html', {
             'active_menu': 'service',
             'sub_menu': submenu,
-            'docList': docList,
-            'pageData': pageData,
+            'doc_list': doc_list,
+            'page_data': page_data,
         })
 
 
 def doc(request, id):
     """下载文件"""
     doc = get_object_or_404(Doc, id=id)
-
-    update_to, filename = str(doc.file).split('/')  # 文件路径和名字
+    # 获取文件的名字
+    file_name = str(doc.file).split('/')[-1]
     # 获取文件的路径
-    file_path = '%s/media/%s/%s' % (os.getcwd(), update_to, filename)
-    print(filename)
+    file_path = '%s%s' % (os.getcwd(),doc.file.url)
     # 将下载文件分批次写入本地磁盘，先不将他们载入文件内存，读取文件，以512B为单位构建迭代器
     response = StreamingHttpResponse(read_file(file_path, 512))
-
     # 作为文件直接下载到本机，用户再用软件打开
     response['Content-Type'] = 'application/octet-stream'
     # 规定文件名的下载格式，在文件名为中文时，要加上escape_uri_path
-    response['Content-Disposition'] = 'attachment; filename="{}"'.format(escape_uri_path(filename))
+    response['Content-Disposition'] = 'attachment; filename="{}"'.format(escape_uri_path(file_name))
     return response
 
 
@@ -196,4 +181,15 @@ def facedetectDemo(request):
         img64 = str(img64, encoding='utf-8')  # bytes转换为str类型
         result["img64"] = img64  # json封装
     return JsonResponse(result)
+
+
+def read_file(file_name, size):
+    """分批读取文件"""
+    with open(file_name, mode='rb') as fp:
+        while True:
+            c = fp.read(size)
+            if c:
+                yield c  # 生成器，相当于一个特殊的迭代器，当运行到这个语句的时候会保存当前的对象；下次再运行到这里的时候会接着上次的对象继续运行。
+            else:
+                break
 

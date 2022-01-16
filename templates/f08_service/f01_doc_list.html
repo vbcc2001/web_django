@@ -34,7 +34,7 @@
         资料列表
       </div>
       <div class="model-details">
-        {% for doc in docList %}
+        {% for doc in doc_list %}
         <div class="news-model">
           <img src="{% static 'img/newsicon.gif' %}">
           <a href="{% url 'service:doc' doc.id %}"><b>{{ doc.title }}</b></a>
@@ -42,33 +42,33 @@
         </div>
         {% endfor %}
 
-        {% if pageData %}
+        {% if page_data %}
         <div class="paging">
           <ul id="pages" class="pagination">
-            {% if pageData.first %}
+            {% if page_data.first %}
             <li><a href="?page=1">1</a></li>
             {% endif %}
-            {% if pageData.left %}
-            {% if pageData.left_has_more %}
+            {% if page_data.left %}
+            {% if page_data.left_has_more %}
             <li><span>...</span></li>
             {% endif %}
-            {% for i in pageData.left %}
+            {% for i in page_data.left %}
             <li><a href="?page={{ i }}">{{ i }}</a></li>
             {% endfor %}
             {% endif %}
-            <li class="active"><a href="?page={{ pageData.page }}">
-                {{ pageData.page }}</a></li>
-            {% if pageData.right %}
-            {% for i in pageData.right %}
+            <li class="active"><a href="?page={{ page_data.page }}">
+                {{ page_data.page }}</a></li>
+            {% if page_data.right %}
+            {% for i in page_data.right %}
             <li><a href="?page={{ i }}">{{ i }}</a></li>
             {% endfor %}
-            {% if pageData.right_has_more %}
+            {% if page_data.right_has_more %}
             <li><span>...</span></li>
             {% endif %}
             {% endif %}
-            {% if pageData.last %}
-            <li><a href="?page={{ pageData.total_pages }}">
-                {{ pageData.total_pages }}</a></li>
+            {% if page_data.last %}
+            <li><a href="?page={{ page_data.total_pages }}">
+                {{ page_data.total_pages }}</a></li>
             {% endif %}
           </ul>
         </div>
