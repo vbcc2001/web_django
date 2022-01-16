@@ -24,22 +24,33 @@ pip freeze > requirements.txt
 ```
 ## 安装依赖
 ```
+# 生产部署依赖
+python -m pip install gunicorn
+# 核心框架
 python -m pip install Django
-python -m pip install psycopg2
+# 数据库依赖 ( psycopg[binary,pool] 不兼容Django4.0)
+# python -m pip install psycopg2
+python -m pip install psycopg2-binary
+# 静态文件服务
 python -m pip install whitenoise
-
+# 图像处理
 python -m pip install Pillow
+# 富文本编辑器
 python -m pip install django-ckeditor
+# 表单定制化渲染
 python -m pip install django-widget-tweaks
+# 网页解析库
 python -m pip install pyquery
+# word转pdf (应聘用)
 python -m pip install docx2pdf
+# word文档处理 (应聘用)
 python -m pip install docxtpl
-
 # 图像处理（人脸识别用）
 python -m pip install opencv-python
 # 矩阵运算（人脸识别用）
 python -m pip install numpy  
 ```
+
 
 ## 安装部署
 
