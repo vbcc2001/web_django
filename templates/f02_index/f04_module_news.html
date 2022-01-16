@@ -1,0 +1,48 @@
+{% load static %}
+<div class="col-md-8">
+  <!-- 新闻动态 -->
+  <span class="part1">新闻动态</span>
+  <span class="part1 en">
+    &nbsp;&nbsp;/ News
+  </span>
+  <a class="btn btn-default btn-xs more-btn" href="{% url 'news:list' 'company' %}">
+    +&nbsp;更多
+  </a>
+  <div class="line1">
+    <div class="line2 theme"></div>
+  </div>
+  <div class="col-md-5">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators nav-point">
+        {% for post in postList %}
+        <li data-target="#myCarousel" data-slide-to="{{ forloop.counter0 }}" {% if forloop.first %} class="active"
+          {% endif %}>
+        </li>
+        {% endfor %}
+      </ol>
+      <!-- 轮播（Carousel）项目 -->
+      <div class="carousel-inner" style="margin-top:15px;">
+        {% for post in postList %}
+        <div {% if forloop.first %} class="item active" {% else %} class="item" {% endif %}
+          style="background-size:cover;">
+          <a href="{% url 'news:detail' post.id %}">
+            <img src="{{ post.photo.url }}" class="img-responsive" onload="DrawImage(this)">
+          </a>
+          <div class="carousel-caption nav-title">{{ post.title }}</div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="col-md-7">
+    <ul class="list-unstyled list-new">
+      {% for mynew in newList %}
+      <li>
+        <a href="{% url 'news:detail' mynew.id %}">
+          {{ mynew.title|truncatechars:"15" }}</a>
+        <span>【{{ mynew.publish_date|date:"Y-m-d" }}】</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

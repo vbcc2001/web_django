@@ -1,0 +1,33 @@
+{% load static %}
+<!-- 产品中心 -->
+<div class="col-md-12 col-pro">
+  <span class="part1">产品中心</span>
+  <span class="part1 en">
+    &nbsp;&nbsp;/ Products
+  </span>
+  <a class="btn btn-default btn-xs more-btn" href="{% url 'product:list' %}">+&nbsp;更多</a>
+  <div class="line1" style="margin-bottom:5px;">
+    <div class="line2 theme"></div>
+  </div>
+  <div class="col-md-12 col-pro">
+    <div id="Carousel" class="carousel slide" style="margin-bottom:30px">
+      <ol class="carousel-indicators" style="display:none;">
+        <li data-target="#Carousel" data-slide-to="0" class="active"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="item active">
+          <div class="row">
+            {% for product in productList %}
+            <div class="col-md-3 pro-images">
+              <a href="{% url 'product:details' product.id %}" class="thumbnail">
+                <img src="{{ product.photo.url }}" alt="产品图片" class="img-responsive" onload="DrawImage(this)">
+              </a>
+              <div class="carousel-caption nav-title">{{ product.title }}</div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

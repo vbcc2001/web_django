@@ -4,9 +4,11 @@ from .models import Product
 from django.db import connection
 from django.http import JsonResponse
 
-def list(request, product_type_name):
-
-    product_list = Product.objects.filter(product_type=product_type_name).order_by('-publish_date')
+def list(request, product_type_name = None):
+    if product_type_name is None:
+        product_list = Product.objects.order_by('-publish_date') 
+    else:
+        product_list = Product.objects.filter(product_type=product_type_name).order_by('-publish_date')
     product_type_list = []
     with connection.cursor() as cursor:
         cursor.execute("SELECT product_type FROM f04_product_product group by product_type")
@@ -16,7 +18,7 @@ def list(request, product_type_name):
             product_type_list.append(item[0])
     # 分页处理
     # 每页显示2条数据
-    p = Paginator(product_list, 2)
+    p = Paginator(product_list, 5)
     if p.num_pages <= 1:
         page_data = ''
     else:

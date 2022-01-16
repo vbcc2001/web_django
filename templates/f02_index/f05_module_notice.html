@@ -1,0 +1,29 @@
+{% load static %}
+<div class="col-md-4">
+  <!-- 通知公告 -->
+  <span class="part1">通知公告</span>
+  <span class="part1 en">
+    &nbsp;&nbsp;/ Public Release
+  </span>
+  <a class="btn btn-default btn-xs more-btn" href="{% url 'news:list' 'notice' %}">
+    +&nbsp;更多
+  </a>
+  <div class="line1">
+    <div class="line2 theme"></div>
+  </div>
+  <div>
+    <img class="img-responsive" src="{% static 'img/note.jpg' %}">
+    <ul class="list-unstyled list-new">
+      {% for note in noteList %}
+      <li>
+        <a href="{% url 'news:detail' note.id %}">
+          {{ note.title|truncatechars:"25" }}
+        </a>
+        <a href="{% url 'news:detail' note.id %}" class="public-detail">
+          查看详情>>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
