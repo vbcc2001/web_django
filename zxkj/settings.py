@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'zxkj.f02_profile.apps.Config', # 简介
     'zxkj.f03_news.apps.Config', # 新闻
     'zxkj.f04_product.apps.Config', # 产品
+    'zxkj.f05_science.apps.Config', # 产品
     'ckeditor',  # 多媒体编辑器
 ]
 
