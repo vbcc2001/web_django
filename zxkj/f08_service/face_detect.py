@@ -6,7 +6,7 @@ import cv2  # opencv包
 
 # 生成人脸检测器
 
-face_detector = cv2.CascadeClassifier('zxkj\\f08_service\\haarcascade_frontalface_default.xml') 
+face_detector = cv2.CascadeClassifier('zxkj/f08_service/haarcascade_frontalface_default.xml') 
 
 @csrf_exempt  # 用于规避跨站点请求攻击
 def face_detect(request):
